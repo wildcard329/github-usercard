@@ -2,9 +2,12 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-// axios.get(https:api.github.com/users/wildcard329)
+// axios.get('https://api.github.com/users/wildcard329')
 // .then(response => {
 //   console.log(response);
+// })
+// .catch(error => {
+//   console.log('The data was not returned', error)
 // })
 
 // commented out to avoid data usage
@@ -48,17 +51,19 @@ function cardMaker (gitUrl) {
   newName.classList.add('name');
   userName.classList.add('username');
 
-  newImage.src = gitUrl;
-  newName.textContent = gitUrl;
-  userName.textContent = gitUrl;
-  location.textContent = gitUrl;
-  profile.textContent = gitUrl;
-  followers.textContent = gitUrl;
-  following.textContent = gitUrl;
-  bio.textContent = gitUrl;
+  newImage.src = 'avatar_url';
+  newName.textContent = 'name';
+  userName.textContent = 'login';
+  location.textContent = 'location';
+  profile.textContent = 'html_url';
+  followers.textContent = 'followers';
+  following.textContent = 'following';
+  bio.textContent = 'bio';
 
-
+  return newCard;
 }
+
+
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
           , manually find some other users' github handles, or use the list found 
