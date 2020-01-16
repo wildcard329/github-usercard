@@ -21,10 +21,43 @@
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
-function cardMaker () {
+function cardMaker (gitUrl) {
   const newCard = document.createElement('div'),
         newImage = document.createElement('img'),
-        name = document.createElement('h3'),
+        newInformation = document.createElement('div'),
+        newName = document.createElement('h3'),
+        userName = document.createElement('p'),
+        location = document.createElement('p'),
+        profile = document.createElement('p'),
+        followers = document.createElement('p'),
+        following = document.createElement('p'),
+        bio = document.createElement('p')
+
+  newCard.append(newImage);
+  newCard.append(newInformation);
+  newInformation.append(newName);
+  newInformation.append(userName);
+  newInformation.append(location);
+  newInformation.append(profile);
+  newInformation.append(followers);
+  newInformation.append(following);
+  newInformation.append(bio);
+
+  newCard.classList.add('card');
+  newInformation.classList.add('card-info');
+  newName.classList.add('name');
+  userName.classList.add('username');
+
+  newImage.src = gitUrl;
+  newName.textContent = gitUrl;
+  userName.textContent = gitUrl;
+  location.textContent = gitUrl;
+  profile.textContent = gitUrl;
+  followers.textContent = gitUrl;
+  following.textContent = gitUrl;
+  bio.textContent = gitUrl;
+
+
 }
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
