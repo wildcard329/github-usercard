@@ -23,6 +23,7 @@ function cardMaker (gitUrl) {
         newImage = document.createElement('img'),
         newInformation = document.createElement('div'),
         newName = document.createElement('h3'),
+        userLink = document.createElement('a'),
         userName = document.createElement('p'),
         location = document.createElement('p'),
         profile = document.createElement('p'),
@@ -39,7 +40,8 @@ function cardMaker (gitUrl) {
   newInformation.append(followers);
   newInformation.append(following);
   newInformation.append(bio);
-
+  profile.append(userLink);
+  
   newCard.classList.add('card');
   newInformation.classList.add('card-info');
   newName.classList.add('name');
@@ -49,10 +51,12 @@ function cardMaker (gitUrl) {
   newName.textContent = gitUrl.name;
   userName.textContent = `Username: ${gitUrl.login}`;
   location.textContent = `Location: ${gitUrl.location}`;
-  profile.textContent = `Profile: ${gitUrl.html_url}`;
+  userLink.textContent = `Profile: ${gitUrl.html_url}`;
   followers.textContent = `Followers: ${gitUrl.followers}`;
   following.textContent = `Following: ${gitUrl.following}`;
   bio.textContent = `Bio: ${gitUrl.bio}`;
+
+  userLink.setAttribute('href', `${gitUrl.html_url}`);
 
   return newCard;
 }
