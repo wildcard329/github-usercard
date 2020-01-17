@@ -51,7 +51,7 @@ function cardMaker (gitUrl) {
   newName.textContent = gitUrl.name;
   userName.textContent = `Username: ${gitUrl.login}`;
   location.textContent = `Location: ${gitUrl.location}`;
-  userLink.textContent = `Profile: ${gitUrl.html_url}`;
+  userLink.textContent = `${gitUrl.html_url}`;
   followers.textContent = `Followers: ${gitUrl.followers}`;
   following.textContent = `Following: ${gitUrl.following}`;
   bio.textContent = `Bio: ${gitUrl.bio}`;
