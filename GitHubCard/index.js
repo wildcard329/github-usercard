@@ -64,14 +64,14 @@ function cardMaker (gitUrl) {
 const entryPoint = document.querySelector('.cards')
 
 
-axios.get('https://api.github.com/users/wildcard329')
-.then(response => {
-  console.log(response)
-    entryPoint.append(cardMaker(response.data))
-})
-.catch(error => {
-  console.log('The data was not returned', error)
-})
+// axios.get('https://api.github.com/users/wildcard329')
+// .then(response => {
+//   console.log(response)
+//     entryPoint.append(cardMaker(response.data))
+// })
+// .catch(error => {
+//   console.log('The data was not returned', error)
+// })
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
@@ -83,7 +83,7 @@ axios.get('https://api.github.com/users/wildcard329')
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['jKuenzinger', 'M-PAW', 'Keyeric', 'cristinaedens', 'Reikiryo'];
+const followersArray = ['jKuenzinger', 'M-PAW', 'Keyeric', 'cristinaedens', 'Reikiryo', 'wildcard329'];
 
 users = followersArray.map(user => 'https://api.github.com/users/'.concat(user))
 
