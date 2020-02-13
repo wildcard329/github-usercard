@@ -64,15 +64,35 @@ function cardMaker (gitUrl) {
 const entryPoint = document.querySelector('.cards')
 
 
-// axios.get('https://api.github.com/users/wildcard329')
-// .then(response => {
-//   console.log(response)
-//     entryPoint.append(cardMaker(response.data))
-// })
-// .catch(error => {
-//   console.log('The data was not returned', error)
-// })
+axios.get('https://api.github.com/users/wildcard329')
+.then(response => {
+  // console.log(response)
+    entryPoint.append(cardMaker(response.data))
+})
+.catch(error => {
+  console.log('The data was not returned', error)
+})
 
+followers = []
+
+axios.get('https://api.github.com/users/wildcard329/followers')
+      .then(res => {
+        console.log('flag res',res.data)
+        Object.values(res.data).forEach(el => {
+          followers.push(el);
+        })
+        fList = followers.map( fol => {
+          return fol.login
+        })
+        console.log('flag followers', fList)
+        fList.forEach(follower => {
+          axios.get(`https://api.github.com/users/${follower}`)
+                .then(response => {
+                  entryPoint.append(cardMaker(response.data))
+                })
+        })
+      })
+console.log(followers)
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
           , manually find some other users' github handles, or use the list found 
@@ -83,16 +103,26 @@ const entryPoint = document.querySelector('.cards')
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['jKuenzinger', 'M-PAW', 'Keyeric', 'cristinaedens', 'Reikiryo', 'wildcard329'];
+// const followersArray = ['jKuenzinger', 'M-PAW', 'Keyeric', 'cristinaedens', 'Reikiryo', 'wildcard329'];
 
-users = followersArray.map(user => 'https://api.github.com/users/'.concat(user))
+// users = followersArray.map(user => 'https://api.github.com/users/'.concat(user))
 
-users.forEach(user => {
-  axios.get(user)
-  .then(response => {
-    entryPoint.append(cardMaker(response.data))
-  })
-})
+// users.forEach(user => {
+//   axios.get(user)
+//   .then(response => {
+//     entryPoint.append(cardMaker(response.data))
+//   })
+// })
+
+// Instructor solution
+// followersArray.forEach(user => {
+//   axios.get(`https://api.github.com/users/${user}`)
+//     .then (response => {
+//       const card = cardMaker(response.data)
+//       const cards = document.querySelector('.cards')
+//       cards.append(card)
+//     })
+// })
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
